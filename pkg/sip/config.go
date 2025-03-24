@@ -48,6 +48,13 @@ func GetServiceConfig(conf *config.Config) (*ServiceConfig, error) {
 		}
 		s.SignalingIPLocal = s.SignalingIP
 	}
+	if conf.MediaUseExternalIP && !conf.UseExternalIP {
+		if s.MediaIP, err = getPublicIP(); err != nil {
+			return nil, err
+		}
+	} else {
+		s.MediaIP = s.SignalingIP
+	}
 	return s, nil
 }
 

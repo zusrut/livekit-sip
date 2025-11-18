@@ -17,6 +17,7 @@ package sip
 import (
 	"context"
 	"fmt"
+	sipTransport "github.com/livekit/sipgo/transport"
 	"net/netip"
 	"strings"
 	"sync"
@@ -64,6 +65,9 @@ type GetIOInfoClient func(projectID string) rpc.IOInfoClient
 func NewService(region string, conf *config.Config, mon *stats.Monitor, log logger.Logger, getIOClient GetIOInfoClient) (*Service, error) {
 	if log == nil {
 		log = logger.GetLogger()
+	}
+	if conf.UDPJumboFrame {
+		sipTransport.UDPMTUSize = 10000
 	}
 	s := &Service{
 		conf:             conf,

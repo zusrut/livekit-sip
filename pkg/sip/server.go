@@ -33,12 +33,11 @@ import (
 
 	"github.com/livekit/protocol/livekit"
 	"github.com/livekit/protocol/logger"
-	"github.com/livekit/sipgo"
-	"github.com/livekit/sipgo/sip"
-
 	"github.com/livekit/sip/pkg/config"
 	"github.com/livekit/sip/pkg/media"
 	"github.com/livekit/sip/pkg/stats"
+	"github.com/livekit/sipgo"
+	"github.com/livekit/sipgo/sip"
 )
 
 const (
